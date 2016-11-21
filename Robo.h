@@ -12,7 +12,7 @@
 #include "Robot_model.h"
 #include "Order.h"
 #include "Sale_ASSO.h"
-
+#include "Customer.h"
 
 using namespace std;
 
@@ -27,6 +27,7 @@ public:
 	void add_motor(Robot_motor moto);
 	void add_models(Robot_model moda);
 	void add_SA(Sale_ASSO);
+	void add_Customer(Customer);
 	
 	
 	void add_Order(Order order);
@@ -59,7 +60,7 @@ public:
 	int get_battery_slot(vector <Robot_body>& ,int);
 	int get_arm_amount(vector <Robot_arms>&, int);
 	int get_model_price(vector <Robot_model>&,int);
-	int get_SA_ID(vector <Sale_ASSO>&,int);
+	string get_SA_ID(vector <Sale_ASSO>&,int);
 	string get_SA_name(vector <Sale_ASSO>&,int);
 	int get_model_index(vector <Order>&,int);
 	
@@ -93,7 +94,7 @@ private:
 	vector <Robot_battery> batt_vec;
 	vector <Robot_motor> motor_vec;
 	vector <Robot_model> model_vec;
-
+	vector <Customer> customer_vec;
 	vector <Order> Order_vec;
 	vector <Sale_ASSO> SA_vec;
 

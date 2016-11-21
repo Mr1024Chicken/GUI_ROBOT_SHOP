@@ -1,13 +1,13 @@
 #include "Robot_arms.h"
 
-Robot_arms::Robot_arms(string new_name, string new_seri, int newprice, int new_weight, int new_consume, string new_des,int _amount){
+Robot_arms::Robot_arms(string new_name, string new_seri, int newprice, int new_weight, int new_consume, string new_des){
 name = new_name;
 serial_num = new_seri;
 price = newprice;
 weight = new_weight;
 consume = new_consume;
 describe = new_des;
-amount = _amount;
+
 }
 
 void Robot_arms::set_price(int temp){

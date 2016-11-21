@@ -16,6 +16,9 @@ void Robo::add_battery(Robot_battery batt){
 	batt_vec.push_back(batt);
 }
 
+void Robo::add_Customer(Customer tom){
+	customer_vec.push_back(tom);
+}
 void Robo::add_motor(Robot_motor moto){
 	motor_vec.push_back(moto);
 }
@@ -116,6 +119,7 @@ void Robo::print_motor(vector <Robot_motor>& info)
 			<<"Energy Consumtion: "<<info[i].get_consume()<<setw(25)<<"Speed: "<<info[i].get_speed()<<endl
 			<<"Description: "<< info[i].get_describe()
 			<<endl<<endl;
+		
 }
 }
 
@@ -257,7 +261,7 @@ int Robo::get_arm_amount(vector <Robot_arms>& arm,int index){
 	return arm[index].get_amount();
 }
 
-int Robo::get_SA_ID(vector <Sale_ASSO>& info, int index){
+string Robo::get_SA_ID(vector <Sale_ASSO>& info, int index){
 	return info[index].get_ID();
 }
 

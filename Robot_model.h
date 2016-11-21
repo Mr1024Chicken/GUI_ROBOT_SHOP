@@ -6,7 +6,7 @@ using namespace std;
 
 class Robot_model{
 public:
-	Robot_model(int new_head,int new_arm,int new_torso,int new_motor,int new_battery,string new_name,string new_model,int new_price,int new_weight){
+	Robot_model(int new_head,int new_arm,int new_torso,int new_motor,int new_battery,string new_name,string new_model,int new_price,int new_weight,string describe_){
 	head = new_head;
 	arm = new_arm;
 	torso = new_torso;
@@ -16,6 +16,7 @@ public:
 	model_number= new_model;
 	price = new_price;
 	weight= new_weight;
+	describe = describe_;
 	}
 
 	int get_head(){return head;}
@@ -25,6 +26,7 @@ public:
 	int get_battery(){return battery;}
 	string get_name(){return name;}
 	string get_model(){return model_number;}
+	string get_describe(){return describe;}
 	int get_price(){return price;}
 	int get_weight(){return weight;}
 
@@ -39,6 +41,7 @@ int weight;
 
 string name;
 string model_number;
+string describe;
 int price;
 
 };
