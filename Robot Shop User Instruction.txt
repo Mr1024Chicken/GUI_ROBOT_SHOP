@@ -1,0 +1,23 @@
+This is Instruction to use Robot_shop program.
+
+*recommended to use visual studio compiler.
+*cannot print something that is not there.
+
+When open the program user are recommended to creates parts, and model first.
+	for these function user must enter proper input.
+	field for Name, Serial, and Description ONLY take string.
+	field for, Price , Weight, .... ONLY take in int.
+	
+	for creating model user can omit any parts , and even create a robots without any parts.
+	
+After complete Filling up the data User now allow to CREATE ORDER.
+	****TO CREATE ORDER THE SYSTEM REQUIRE AN REGISTER CUSTOMER, REGISTER SALES ASSOCIATE, AND AN EXISTING MODEL 
+	TO SUCCESSFULLY CREATE A MODEL ALL FIELD MUST BE FILL 
+	PRICE ONLY TAKE IN INTEGER.
+
+after completing the following the use can go back and review the:
+-parts
+-sales associate
+-customer
+-robot model
+-ORDERS( will include Customer buy record, and Sales associate sales record).
