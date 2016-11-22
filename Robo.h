@@ -41,7 +41,8 @@ public:
 	
 	void print_SA(vector <Sale_ASSO>& SA);
 	void print_Order(vector <Order>& order, vector <Sale_ASSO>&);
-
+	
+	vector <Customer> get_customer(){return customer_vec;}
 	vector <Robot_arms> get_arms(){return arm_vec;}
 	vector <Robot_body> get_body(){return body_vec;}
 	vector <Robot_head> get_head(){return head_vec;}

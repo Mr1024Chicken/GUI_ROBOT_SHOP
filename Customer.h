@@ -13,11 +13,14 @@ public:
 	phone = phone_;
 	total =0;
 	}
+	Customer(int to){
+	total =to;
+	}
 
 	string get_name(){return name;}
 	string get_phone(){return phone;}
 	int get_total(){return total;}
-
+	void set_total(int x){ total +=x;}
 private:
 	string name;
 	string phone;

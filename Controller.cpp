@@ -389,3 +389,8 @@ Robo Controller::add_SA(string name, string ID, Robo info){
 	info.add_SA(Sale_ASSO(name,ID));
 	return info;
 }
+
+Robo Controller::add_order(double _tax, double _shiping, double _price,int _model,int _amount, string _date, string _receipt,double sub_total,int customer_index,int SA_index,string customer_name,Robo info){
+	info.add_Order(Order(_tax, _shiping, _price, _model, _amount, _date,_receipt, sub_total, customer_index, SA_index, customer_name));
+	return info;
+}

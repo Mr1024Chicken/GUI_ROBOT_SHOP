@@ -14,7 +14,9 @@ public:
 	/*
 	Order(int,int,int,int,int,int,string,string);*/
 	//	 sub_total,amount,shiping,total_price,model_number, customer_index, date , order_number
-	Order(double _tax, double _shiping, double _price,int _model,int _amount, string _date, string _receipt,double,int,int,string );
+	Order(double _tax, double _shiping, double _price,int _model,int _amount, string _date, 
+		string _receipt,double sub_total,int customer_index,int SA_index,string customer_name );
+
 
 
 	string get_order(){return order_number;}

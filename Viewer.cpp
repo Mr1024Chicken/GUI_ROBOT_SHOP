@@ -21,6 +21,14 @@ int type_G=0;
 Robo mark;
 Controller whip;
 Input_Dialog input;
+Fl_Window *win_slide;
+Fl_Menu_Bar *menu;
+Input_Dialog *input_dialog;
+Fl_Output *out,*model_out;
+Fl_Button *show ,*show_model;
+Fl_Window *new_win;
+Fl_Scrollbar *model_scroll1;
+
 
 int head_size = mark.get_head().size()+1;
 
@@ -104,11 +112,6 @@ void view_motorCB(){
 
 }
 
-Fl_Window *win_slide;
-Fl_Menu_Bar *menu;
-Input_Dialog *input_dialog;
-Fl_Output *out,*model_out;
-Fl_Button *show ,*show_model;
 
 void scrollbar_CB(Fl_Widget *w, void *p)
 {
@@ -174,33 +177,72 @@ void menu_scrollbarCB(Fl_Widget *w, void *p){
 	char s[20];
 	//bscroll->value();
 	
-	sprintf(s,"%d",model_scroll->value());
+	sprintf(s,"%d",model_scroll1->value());
 	model_out->value(s);
 }
 void show_modelCB(){
-	int temp =model_scroll->value()-1;
+	int temp =model_scroll1->value()-1;
+	if(model_scroll1->value() >0){
 	input.print_model(temp);
+	}
 }
+
 void model_scrollCB(){
 	int size = input.model_size();
 
-	win_slide = new Fl_Window(500,300,"Robot Model");
-	model_scroll = new Fl_Scrollbar(200,30,200,30,"Model");
-	model_scroll->type(FL_HORIZONTAL);
-	model_scroll->slider_size(.1);
-	model_scroll->bounds(0,size);
-	model_scroll->value(0);
-	model_scroll->step(1);
-	model_scroll->callback(menu_scrollbarCB, (void*)&model_out);
+	new_win = new Fl_Window(500,300,"Robot Model");
+	model_scroll1 = new Fl_Scrollbar(200,30,200,30,"Model");
 	model_out = new Fl_Output(200,70,50,20,"Model");
+
+	model_scroll1->type(FL_HORIZONTAL);
+	model_scroll1->slider_size(.1);
+	model_scroll1->bounds(0,size);
+	model_scroll1->value(0);
+	model_scroll1->step(1);
+	model_scroll1->callback(menu_scrollbarCB, (void*)&model_out);
+	
 	show_model = new Fl_Button(400,260,100,40,"Show Model");
 	show_model->callback((Fl_Callback *) show_modelCB);
-	//show->callback((Fl_Callback *) showCB,0);
 
-	win_slide->end();
-	win_slide->show();
+	
+
+	new_win->end();
+	new_win->show();
 
 }
+Fl_Window *customer_dialog2;
+void SA_index(){
+	char s[20];
+	sprintf(s,"%d",model_scroll->value());
+	model_out->value(s);
+}
+void SACB(){
+	int temp =model_scroll1->value()-1;
+	input.view_SA(temp);
+}
+
+void CICB(){
+	int temp = model_scroll1->value()-1;
+	input.view_Customer(temp-1);
+}
+void SA_scrollCB(){
+	int size = input.SA_size();
+	customer_dialog2 = new Fl_Window(500,400,"Customer Info");
+	model_scroll1 = new Fl_Scrollbar(200,30,200,30,"Customer");
+	model_scroll1->type(FL_HORIZONTAL);
+	model_scroll1->slider_size(.1);
+	model_scroll1->bounds(0,size);
+	model_scroll1->value(0);
+	model_scroll1->step(1);
+	model_scroll1->callback(menu_scrollbarCB, (void*)&model_scroll1);
+	model_out = new Fl_Output(200,70,50,20,"SA");
+	show_model = new Fl_Button(350,260,100,40,"Show SA");
+	show_model->callback((Fl_Callback *) SACB,0);
+	customer_dialog2->end();
+	customer_dialog2->show();
+}
+
+
 void test_caseCB(){
 	input.Test_add();
 }
@@ -213,8 +255,50 @@ void make_customerCB(Fl_Widget *w,void *p){
 	input.Customer();
 }
 
-void make_SACB(){
+void make_SACB(Fl_Widget *w,void *p){
 	input.SA();
+}
+
+void customer_scrollCB(Fl_Widget *w,void *p){
+	int size = input.customer_size();
+	customer_dialog2 = new Fl_Window(500,400,"Customer Info");
+	model_scroll1 = new Fl_Scrollbar(200,30,200,30,"Customer");
+	model_scroll1->type(FL_HORIZONTAL);
+	model_scroll1->slider_size(.1);
+	model_scroll1->bounds(0,size);
+	model_scroll1->value(0);
+	model_scroll1->step(1);
+	model_scroll1->callback(menu_scrollbarCB, (void*)&model_scroll1);
+	model_out = new Fl_Output(200,70,50,20,"Customer");
+	show_model = new Fl_Button(350,260,100,40,"Show SA");
+	show_model->callback((Fl_Callback *) CICB,0);
+	customer_dialog2->end();
+	customer_dialog2->show();
+}
+void make_orderCB(Fl_Widget *w,void *p){
+	input.make_order();
+}
+void show_orderCC(){
+	int temp = model_scroll1->value();
+	input.view_Order(temp-1);
+
+}
+void order_scrollCB(){
+
+	int size = input.order_size();
+	customer_dialog2 = new Fl_Window(500,400,"Order");
+	model_scroll1 = new Fl_Scrollbar(200,30,200,30,"Order #");
+	model_scroll1->type(FL_HORIZONTAL);
+	model_scroll1->slider_size(.1);
+	model_scroll1->bounds(0,size);
+	model_scroll1->value(0);
+	model_scroll1->step(1);
+	model_scroll1->callback(menu_scrollbarCB, (void*)&model_scroll1);
+	model_out = new Fl_Output(200,70,50,20,"Order");
+	show_model = new Fl_Button(350,260,100,40,"Show Order");
+	show_model->callback((Fl_Callback *) show_orderCC,0);
+	customer_dialog2->end();
+	customer_dialog2->show();
 }
 
 int Viewer::user_menu(){
@@ -235,6 +319,9 @@ int Viewer::user_menu(){
 		{"Head",0,(Fl_Callback *) view_headCB},
 		{"Battery",0, (Fl_Callback *) view_batteryCB},
 		{"Robot Model",0 ,(Fl_Callback *) model_scrollCB},
+		{"Customer",0,(Fl_Callback *) customer_scrollCB},
+		{"SA",0,(Fl_Callback *) SA_scrollCB},
+		{"Orders",0,(Fl_Callback *) order_scrollCB},
 		{0},
 		{"Create",0,0,0, FL_SUBMENU},
 		//{"Parts",0 ,0,0,FL_SUBMENU},
@@ -246,6 +333,7 @@ int Viewer::user_menu(){
 		{"Robot Model",0, (Fl_Callback *) make_modelCB},
 		{"Customer",0, (Fl_Callback *) make_customerCB},
 		{"SA",0,(Fl_Callback *) make_SACB},
+		{"Order",0,(Fl_Callback *) make_orderCB},
 		{"Test_case",0,(Fl_Callback *) test_caseCB},
 		{0},
 		{0}
@@ -266,7 +354,8 @@ int Viewer::user_menu(){
 
 }
 void showCB(Fl_Widget *w, void *p){
-	input.print_stuff(scroll->value()-1,type_G);
+	int temp =scroll->value()-1;
+	input.print_stuff(temp,type_G);
 }
 
 

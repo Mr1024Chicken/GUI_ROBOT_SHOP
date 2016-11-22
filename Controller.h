@@ -29,6 +29,10 @@ public:
 	Robo add_motor(string name, string serial, string describe, int price, int weight, int consume, int speed, Robo info);
 	Robo add_model(string name, string serial, string describe, int arm_index, int head_index, int body_index, int motor_index, int battery_index, int price, int weight, Robo info);
 	
+	Robo add_order(double _tax, double _shiping, double _price,int _model,int _amount, string _date, 
+		string _receipt,double sub_total,int customer_index,int SA_index,string customer_name,Robo info);
+
+
 	Robo add_customer(string name, string phone, Robo info);
 	Robo add_SA(string name, string ID, Robo info);
 	//Robo add_arms(Robo);

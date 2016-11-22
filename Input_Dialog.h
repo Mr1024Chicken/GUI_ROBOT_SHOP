@@ -37,13 +37,15 @@ public:
 	
 	void print_stuff(int,int);
 	Robo arm_dialog(int, Controller,Robo);
-	void print_model(int x);
+	void print_model(int x);/////////////////////////////////////////////////
 	void Model();
+	void make_order();
+	void view_Order(int x);
 
 	void SA();
-	void view_SA();
+	void view_SA(int x);
 	void Customer();
-	void view_Customer();
+	void view_Customer(int x);
 
 	void view_arm();
 	void view_head();
@@ -57,8 +59,11 @@ public:
 	int battery_size();
 	int body_size();
 	int model_size();
-
+	int customer_size();
+	int SA_size();
+	int order_size();
 	void Test_add();
+
 
 private:
 	

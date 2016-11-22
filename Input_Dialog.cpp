@@ -18,7 +18,7 @@ int type;
 	Fl_Input *speed;
 	Fl_Scrollbar *scrollbar;
 	
-
+	Input_Dialog talk;
 
 	Fl_Input *power;
 	vector <Robot_motor> motorola = champ.get_motor();
@@ -49,6 +49,14 @@ int type;
 	}
 	int Input_Dialog::battery_size(){
 		return champ.get_batt().size();
+	}
+	int Input_Dialog::customer_size(){
+		return champ.get_customer().size();}
+	int Input_Dialog::SA_size(){
+		return champ.get_SA().size();
+	}
+	int Input_Dialog::order_size(){
+		return champ.get_order().size();
 	}
 
 
@@ -277,12 +285,12 @@ void Input_Dialog::print_stuff(int x, int type){
 
 	temp_name = champ.get_arms()[x].get_name();
 	char_name = temp_name.c_str();
-	pname = new Fl_Output(80,20,100,20,"Name");
+	pname = new Fl_Output(80,20,300,20,"Name");
 	pname->value(char_name);
 
 	temp_name = champ.get_arms()[x].get_serial();
 	char_name = temp_name.c_str();
-	pserial = new Fl_Output(80,50,100,20,"Serial");
+	pserial = new Fl_Output(80,50,300,20,"Serial");
 	pserial->value(char_name);
 
 
@@ -294,33 +302,27 @@ void Input_Dialog::print_stuff(int x, int type){
 	int price = champ.get_arms()[x].get_price();
 	temp_name = to_string(static_cast <long long>(price));
 	char_name = temp_name.c_str();
-	pprice = new Fl_Output(80,80,100,20,"Price");
+	pprice = new Fl_Output(80,80,300,20,"Price");
 	pprice->value(char_name);
 	
 	int weight = champ.get_arms()[x].get_weight();
 	temp_name = to_string(static_cast <long long> (weight));
 	char_name = temp_name.c_str();
-	pweight = new Fl_Output(80,110,100,20,"Weight");
+	pweight = new Fl_Output(80,110,300,20,"Weight");
 	pweight->value(char_name);
 
-	int amount = champ.get_arms()[x].get_amount();
-	temp_name = to_string(static_cast <long long> (amount));
-	char_name = temp_name.c_str();
-	pamount = new Fl_Output(80,140,100,20,"Arms #");
-	pamount->value(char_name);
-	
 	}
 
 	if (type ==2){
 
 	temp_name = champ.get_head()[x].get_name();
 	char_name = temp_name.c_str();
-	pname = new Fl_Output(80,20,100,20,"Name");
+	pname = new Fl_Output(80,20,300,20,"Name");
 	pname->value(char_name);
 
 	temp_name = champ.get_head()[x].get_serial();
 	char_name = temp_name.c_str();
-	pserial = new Fl_Output(80,50,100,20,"Serial");
+	pserial = new Fl_Output(80,50,300,20,"Serial");
 	pserial->value(char_name);
 
 
@@ -332,13 +334,13 @@ void Input_Dialog::print_stuff(int x, int type){
 	int price = champ.get_head()[x].get_price();
 	temp_name = to_string(static_cast <long long>(price));
 	char_name = temp_name.c_str();
-	pprice = new Fl_Output(80,80,100,20,"Price");
+	pprice = new Fl_Output(80,80,300,20,"Price");
 	pprice->value(char_name);
 	
 	int weight = champ.get_head()[x].get_weight();
 	temp_name = to_string(static_cast <long long> (weight));
 	char_name = temp_name.c_str();
-	pweight = new Fl_Output(80,110,100,20,"Weight");
+	pweight = new Fl_Output(80,110,300,20,"Weight");
 	pweight->value(char_name);
 	}
 
@@ -346,12 +348,12 @@ void Input_Dialog::print_stuff(int x, int type){
 		if (type ==3){
 	temp_name = champ.get_motor()[x].get_name();
 	char_name = temp_name.c_str();
-	pname = new Fl_Output(80,20,100,20,"Name");
+	pname = new Fl_Output(80,20,300,20,"Name");
 	pname->value(char_name);
 
 	temp_name = champ.get_motor()[x].get_serial();
 	char_name = temp_name.c_str();
-	pserial = new Fl_Output(80,50,100,20,"Serial");
+	pserial = new Fl_Output(80,50,300,20,"Serial");
 	pserial->value(char_name);
 
 
@@ -363,37 +365,37 @@ void Input_Dialog::print_stuff(int x, int type){
 	int price = champ.get_motor()[x].get_price();
 	temp_name = to_string(static_cast <long long>(price));
 	char_name = temp_name.c_str();
-	pprice = new Fl_Output(80,80,100,20,"Price");
+	pprice = new Fl_Output(80,80,300,20,"Price");
 	pprice->value(char_name);
 	
 	int weight = champ.get_motor()[x].get_weight();
 	temp_name = to_string(static_cast <long long> (weight));
 	char_name = temp_name.c_str();
-	pweight = new Fl_Output(80,110,100,20,"Weight");
+	pweight = new Fl_Output(80,110,300,20,"Weight");
 	pweight->value(char_name);
 
 	int speed = champ.get_motor()[x].get_speed();
 	temp_name = to_string(static_cast <long long> (speed));
 	char_name = temp_name.c_str();
-	pspeed = new Fl_Output(80,140,100,20,"Speed");
+	pspeed = new Fl_Output(80,140,300,20,"Speed");
 	pspeed->value(char_name);
 
 	int consume = champ.get_motor()[x].get_consume();
 	temp_name = to_string(static_cast <long long > (consume));
 	char_name = temp_name.c_str();
-	pconsume = new Fl_Output(80,170,100,20,"Consume");
+	pconsume = new Fl_Output(80,170,300,20,"Consume");
 	pconsume->value(char_name);
 	}
 
 	if (type ==4){
 	temp_name = champ.get_body()[x].get_name();
 	char_name = temp_name.c_str();
-	pname = new Fl_Output(80,20,100,20,"Name");
+	pname = new Fl_Output(80,20,300,20,"Name");
 	pname->value(char_name);
 
 	temp_name = champ.get_body()[x].get_serial();
 	char_name = temp_name.c_str();
-	pserial = new Fl_Output(80,50,100,20,"Serial");
+	pserial = new Fl_Output(80,50,300,20,"Serial");
 	pserial->value(char_name);
 
 
@@ -405,30 +407,30 @@ void Input_Dialog::print_stuff(int x, int type){
 	int price = champ.get_body()[x].get_price();
 	temp_name = to_string(static_cast <long long>(price));
 	char_name = temp_name.c_str();
-	pprice = new Fl_Output(80,80,100,20,"Price");
+	pprice = new Fl_Output(80,80,300,20,"Price");
 	pprice->value(char_name);
 	
 	int weight = champ.get_body()[x].get_weight();
 	temp_name = to_string(static_cast <long long> (weight));
 	char_name = temp_name.c_str();
-	pweight = new Fl_Output(80,110,100,20,"Weight");
+	pweight = new Fl_Output(80,110,300,20,"Weight");
 	pweight->value(char_name);
 
 	int consume = champ.get_body()[x].get_batt();
 	temp_name = to_string(static_cast <long long > (consume));
 	char_name = temp_name.c_str();
-	pslot = new Fl_Output(80,170,100,20,"Battery slot");
+	pslot = new Fl_Output(80,170,300,20,"Battery slot");
 	pslot->value(char_name);
 	}
 	if (type ==5){
 	temp_name = champ.get_batt()[x].get_name();
 	char_name = temp_name.c_str();
-	pname = new Fl_Output(80,20,100,20,"Name");
+	pname = new Fl_Output(80,20,300,20,"Name");
 	pname->value(char_name);
 
 	temp_name = champ.get_batt()[x].get_serial();
 	char_name = temp_name.c_str();
-	pserial = new Fl_Output(80,50,100,20,"Serial");
+	pserial = new Fl_Output(80,50,300,20,"Serial");
 	pserial->value(char_name);
 
 
@@ -440,19 +442,19 @@ void Input_Dialog::print_stuff(int x, int type){
 	int price = champ.get_batt()[x].get_price();
 	temp_name = to_string(static_cast <long long>(price));
 	char_name = temp_name.c_str();
-	pprice = new Fl_Output(80,80,100,20,"Price");
+	pprice = new Fl_Output(80,80,300,20,"Price");
 	pprice->value(char_name);
 	
 	int weight = champ.get_batt()[x].get_weight();
 	temp_name = to_string(static_cast <long long> (weight));
 	char_name = temp_name.c_str();
-	pweight = new Fl_Output(80,110,100,20,"Weight");
+	pweight = new Fl_Output(80,110,300,20,"Weight");
 	pweight->value(char_name);
 
 	int consume = champ.get_batt()[x].get_energy();
 	temp_name = to_string(static_cast <long long > (consume));
 	char_name = temp_name.c_str();
-	penergy = new Fl_Output(80,170,100,20,"Power(Watt)");
+	penergy = new Fl_Output(80,170,300,20,"Power(Watt)");
 	penergy->value(char_name);
 	}
 
@@ -533,11 +535,12 @@ void Input_Dialog::print_model(int x){
 }
 
 
+
 Fl_Window *make_model;
 Fl_Scrollbar *arm_, *head_, *motor_, *battery_, *body_;
 Fl_Button *armB, *headB, *motorB, *batteryB, *bodyB, *create_model;
 Fl_Output *arm_out, *head_out, *motor_out, *battery_out, *body_out, *price_out;
-Input_Dialog talk;
+
 Fl_Input *model_name, *model_weight, *model_price,*model_serial;
 Fl_Multiline_Input  *model_describe;
 	//char s[20];
@@ -627,16 +630,25 @@ void create_modelCB(){
 	string price_ = model_price->value();
 	string describe_ = model_describe->value();
 	string serial_ = model_serial->value();
-
+	int temp=0;
 	int cost = stoi(price_);
-	int weight = champ.get_arms()[arm_->value()-1].get_weight() + champ.get_batt()[battery_->value()-1].get_weight() + champ.get_body()[body_->value()-1].get_weight() + champ.get_head()[head_->value()-1].get_weight() + champ.get_motor()[motor_->value()-1].get_weight();
+	if(champ.get_arms().size() !=0 && champ.get_batt().size() !=0 && champ.get_body().size() !=0 && champ.get_head().size() !=0 && champ.get_motor().size()!=0){
+	
+	 
+	if(arm_->value() !=0){temp += champ.get_arms()[arm_->value()-1].get_weight();}
+	if(head_->value() !=0){temp += champ.get_head()[head_->value()-1].get_weight();}
+	if(battery_->value() !=0){temp +=  champ.get_batt()[battery_->value()-1].get_weight();}
+	if(body_->value() !=0){temp += champ.get_body()[body_->value()-1].get_weight();}
+	if(motor_->value() !=0){temp += champ.get_motor()[motor_->value()-1].get_weight();}
+	}
+	
 	int head = head_->value();
 	int arm = arm_->value();
 	int motor = motor_->value();
-	int body = body_->value();
+	int body = body_->value()-1; /************************QUIK FIX -1 to match**********************************/
 	int battery = battery_->value();
 
-	champ = king.add_model(name_,serial_,describe_,arm, head, body, motor  ,battery , cost,weight,champ);
+	champ = king.add_model(name_,serial_,describe_,arm, head, body, motor  ,battery , cost,temp,champ);
 	make_model->hide();
 }
 
@@ -700,7 +712,7 @@ void Input_Dialog::Model(){
 	
 	model_name = new Fl_Input(70,380,150,20,"Name");
 	model_price = new Fl_Input(70,420,150,20,"Price");
-	price_out = new Fl_Output(300,420,50,20,"Fix");
+	price_out = new Fl_Output(300,420,80,20,"Fix");
 	model_serial = new Fl_Input (70,460,150,20,"Serial");
 	model_describe = new Fl_Multiline_Input(70,500,150,75,"Describe");
 	price_out->callback((Fl_Callback *) price_output_CB);
@@ -745,6 +757,7 @@ void create_customerCB(){
 	string phone_ = customer_phone->value();
 
 	champ = king.add_customer(name_,phone_,champ);
+	
 	customer_dialog->hide();
 }
 
@@ -785,11 +798,281 @@ void Input_Dialog::SA(){
 }
 Fl_Output *N_SA, *ID_SA, *total;
 
-void Input_Dialog::view_SA(){
+void Input_Dialog::view_SA(int x){
 
-	sa = new Fl_Window(500,400,"Sales Associate");
-	N_SA = new Fl_Output(200,50,250,30,"Name");
-	ID_SA = new Fl_Output(200,100,250,30," ID");
-	total = new Fl_Output(200,150,250,30,"Sales $");
+	string temp_name;
+	const char *char_name;
+	int sales=0;
+	sa = new Fl_Window(300,200,"Sales Associate");
+	
+	//N_SA = new Fl_Output(200,50,250,30,"Name");
+	temp_name = champ.get_SA()[x].get_name();
+	char_name = temp_name.c_str();
+	N_SA = new Fl_Output(120,20,100,20,"Name");
+	N_SA->value(char_name);
+
+	temp_name = champ.get_SA()[x].get_ID();
+	char_name = temp_name.c_str();
+	ID_SA = new Fl_Output(120,50,100,20,"ID");
+	ID_SA->value(char_name);
+
+	sales = champ.get_SA()[x].get_total_sale();
+	temp_name = to_string(static_cast <long long> (sales));
+	char_name = temp_name.c_str();
+	total = new Fl_Output(120,80,100,20,"Total Sales #");
+	total->value(char_name);
+
+	sa->end();
+	sa->show();
+
+}
+
+void Input_Dialog::view_Customer(int x){
+		string temp_name;
+	const char *char_name;
+	
+	int sales=0;
+	sa = new Fl_Window(300,200,"Customer Info");
+	
+	//N_SA = new Fl_Output(200,50,250,30,"Name");
+	temp_name = champ.get_customer()[x].get_name();
+	char_name = temp_name.c_str();
+	N_SA = new Fl_Output(120,20,100,20,"Name");
+	N_SA->value(char_name);
+
+	temp_name = champ.get_customer()[x].get_phone();
+	char_name = temp_name.c_str();
+	ID_SA = new Fl_Output(120,50,100,20,"Phone #");
+	ID_SA->value(char_name);
+
+	sales = champ.get_customer()[x].get_total();
+	temp_name = to_string(static_cast <long long> (sales));
+	char_name = temp_name.c_str();
+	total = new Fl_Output(120,80,100,20,"Total Charge #");
+	total->value(char_name);
+
+	sa->end();
+	sa->show();
+
+}
+
+Fl_Window *make_orderwin;
+Fl_Scrollbar *model_slide, *SA_slide, *customer_slide;
+Fl_Output *model_num,*customer_N, *SA_N, *model_sub, *model_tax, *model_ship, *model_total;
+Fl_Input *amount_purchase, *receipt, *date;
+Fl_Button *modelB, *createB, *calculateB;
+
+void show_modelcb(){
+	int temp = model_slide->value();
+	if(model_slide->value() >0){
+	talk.print_model(temp-1);
+	}
+}
+
+void model_slideCB2(Fl_Widget *w, void *p){
+	
+	if(model_slide->value() > 0){
+	string name_ = champ.get_model()[model_slide->value()-1].get_name();
+	const char *x;
+	x = name_.c_str();
+	model_num->value(x);
+	}
+}
+
+void customer_slideCB(Fl_Widget *w, void *p){
+	if(customer_slide->value() > 0){
+	string name_ = champ.get_customer()[customer_slide->value() -1].get_name();
+	const char *x;
+	x = name_.c_str();
+	customer_N->value(x);
+}
+}
+void SA_slideCB(Fl_Widget *w, void *p){
+	if(SA_slide->value() > 0){
+		string name_ = champ.get_SA()[SA_slide->value() -1].get_name();
+	const char *x;
+	x = name_.c_str();
+	SA_N->value(x);
+}
+}
+
+void create_orderCB(Fl_Widget *w, void *p){
+
+	double subtotal=0 , tax=0, ship=0, total=0;
+	int amount =0;
+	int model_index , customer_index, SA_index;
+	string date_ = date->value();
+	string receipt_ = receipt->value();
+	string cus_name = champ.get_customer()[customer_slide->value()-1].get_name();
+
+	model_index = model_slide->value()-1;
+	customer_index = customer_slide->value()-1;
+	SA_index = SA_slide->value()-1;
+
+
+	if(model_slide->value() !=0 && amount_purchase->value() !=NULL && amount_purchase->value()[0] != 0 && date->value() !=NULL && date->value()[0] != 0 && receipt->value() !=NULL && receipt->value()[0] != 0){
+		subtotal = champ.get_model()[model_slide->value() -1].get_price();
+		ship = champ.get_model()[model_slide->value() -1].get_weight() * 3; ///3$ a kg
+		tax = subtotal *.12;
+		
+		string amount_ = amount_purchase->value();
+		amount = stoi(amount_);
+		total = (subtotal + tax + ship)*amount;
+		
+
+		
+		champ = king.add_order( tax , ship , total , model_index , amount , date_ , receipt_, subtotal , customer_index,SA_index, cus_name, champ);
+		
+		int own_update = champ.get_customer()[customer_slide->value() -1].get_total();
+		own_update +=total;
+		champ.get_customer()[customer_slide->value() -1 ].set_total(own_update);
+
+		int total_update = champ.get_SA()[SA_slide->value()-1].get_total_sale();
+		total_update += total;
+		champ.get_SA()[SA_slide->value() -1].set_sale(total_update);
+		
+		make_orderwin->hide();
+	}
+
+
+}
+
+void calculateCB(Fl_Widget *w, void *p){
+		double sub_total, tax, ship, total;
+		if(model_slide->value() !=0 && amount_purchase->value() !=NULL && amount_purchase->value()[0] != 0){
+		const char* lion;
+		string king;
+
+	sub_total = champ.get_model()[model_slide->value() - 1].get_price();
+	ship = champ.get_model()[model_slide->value() - 1].get_weight() * 3;  //shipping goes by 3$ a KG.
+	tax = sub_total * .12;  // 12% tax rate
+	string amount_ = amount_purchase->value();
+	int amount = 0;
+	amount = stoi(amount_);
+	total = (sub_total + ship + tax)* amount;
+	
+	king = to_string(static_cast <long long> (sub_total));
+	lion = king.c_str();
+	model_sub->value(lion);
+
+	king = to_string(static_cast <long long> (tax));
+	lion = king.c_str();
+	model_tax->value(lion);
+
+	king = to_string(static_cast <long long> (ship));
+	lion = king.c_str();
+	model_ship->value(lion);
+
+	king = to_string(static_cast <long long> (total));
+	lion = king.c_str();
+	model_total->value(lion);
+
+	}
+}
+
+void Input_Dialog::make_order(){
+
+
+
+	make_orderwin = new Fl_Window(500,600,"Make Order");
+	
+	model_slide = new Fl_Scrollbar(30,30,200,15,"Model");
+	model_num = new Fl_Output(90,60,100,20);
+	modelB = new Fl_Button(190,60,40,20,"View");
+	model_slide->type(FL_HORIZONTAL);
+	model_slide->slider_size(.1);
+	model_slide->bounds(0,champ.get_model().size());
+	model_slide->value(0);
+	model_slide->step(1);
+	model_slide->callback(model_slideCB2, (void*)&model_slide);
+	modelB->callback((Fl_Callback *) show_modelcb);
+
+	customer_slide = new Fl_Scrollbar(30,90,200,15,"Customer Name");
+	customer_N = new Fl_Output(90,120,100,20);
+	customer_slide->type(FL_HORIZONTAL);
+	customer_slide->slider_size(.1);
+	customer_slide->bounds(0,champ.get_customer().size());
+	customer_slide->value(0);
+	customer_slide->step(1);
+	customer_slide->callback(customer_slideCB, (void*)&customer_slide);
+
+	SA_slide = new Fl_Scrollbar(30,150,200,15,"SA Name");
+	SA_N = new Fl_Output(90,180,100,20);
+	SA_slide->type(FL_HORIZONTAL);
+	SA_slide->slider_size(.1);
+	SA_slide->bounds(0,champ.get_SA().size());
+	SA_slide->value(0);
+	SA_slide->step(1);
+	SA_slide->callback(SA_slideCB, (void*)&SA_slide);
+
+	amount_purchase = new Fl_Input(90,270,100,20,"Amount");
+	receipt = new Fl_Input(90,300,100,20,"Rceipt #");
+	date = new Fl_Input(90,330,100,20,"Date");
+
+	model_sub = new Fl_Output(300,270,100,20,"Sub-total");
+	model_tax = new Fl_Output(300,300,100,20,"Tax");
+	model_ship = new Fl_Output(300,330,100,20,"Shipping");
+	model_total = new Fl_Output(300,360,100,20,"&TOTAL PRICE");
+	createB = new Fl_Button(280,550,140,40,"Create Order");
+	calculateB = new Fl_Button(410,360,80,20,"calculate");
+
+	calculateB->callback((Fl_Callback *) calculateCB);
+	createB->callback((Fl_Callback *) create_orderCB);
+
+
+	make_orderwin->end();
+	make_orderwin->show();
+
+}
+
+Fl_Output *price_o,*cust_o, *sa_o, *amo_o, *dat_o, *rec_o;
+Fl_Window *orderwin;
+void Input_Dialog::view_Order(int x){
+
+	orderwin = new Fl_Window(500,300,"Orders");
+	double price = champ.get_order()[x].get_total();
+	int amo = champ.get_order()[x].get_amount();
+
+	string dat = champ.get_order()[x].get_date();
+	string rec = champ.get_order()[x].get_order();
+
+	int cust = champ.get_order()[x].get_customer();
+	int sa = champ.get_order()[x].get_SA();
+	string customerName = champ.get_customer()[cust].get_name();
+	string saName = champ.get_SA()[sa].get_name();
+
+	price_o = new Fl_Output(120,50,100,30,"Price");
+	amo_o = new Fl_Output(120,80,100,30,"Amount Purchase");
+	dat_o = new Fl_Output(120,110,100,30,"Date");
+	rec_o = new Fl_Output(120,140,100,30,"Receipt#");
+	cust_o = new Fl_Output(120,170,100,30,"Customer Name");
+	sa_o = new Fl_Output(120,200,100,30,"Sales Associate");
+
+	const char* king;
+	string lion;
+
+	king = customerName.c_str();
+	cust_o->value(king);
+
+	king = saName.c_str();
+	sa_o->value(king);
+
+	king = dat.c_str();
+	dat_o->value(king);
+
+	king = rec.c_str();
+	rec_o->value(king);
+
+	lion = to_string(static_cast <long long> (price));
+	king = lion.c_str();
+	price_o->value(king);
+
+	lion = to_string(static_cast <long long> (amo));
+	king = lion.c_str();
+	amo_o->value(king);
+
+	orderwin->end();
+	orderwin->show();
+
 
 }
